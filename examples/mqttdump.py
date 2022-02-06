@@ -48,12 +48,9 @@ args = parser.parse_args()
 from miauth.mi.micrypto import MiCrypto
 
 from paho.mqtt import client as mqtt_client
-#broker = '65.108.182.254'
 port = 1883
 broker = '127.0.0.1'
-#port = 1880
 topic = "m365/test/"
-# generate client ID with pub prefix randomly
 client_id = f'john-xina'
 
 def connect_mqtt():
@@ -64,7 +61,7 @@ def connect_mqtt():
             print("Failed to connect, return code %d\n", rc)
 
     client = mqtt_client.Client(client_id)
-    client.username_pw_set('scooter', 'nigg2939294924958583')
+    client.username_pw_set('scooter', 'PASSWORD')
     client.on_connect = on_connect
     client.connect(broker, port)
     return client
