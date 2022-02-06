@@ -1,6 +1,7 @@
 #
+#     Mi365 Scooter Library
 #     MiAuth - Authenticate and interact with Xiaomi devices over BLE
-#     Copyright (C) 2021  Daljeet Nandha
+#     Copyright (C) 2021  Daljeet Nandha + modified by @catSIXe
 #
 #     This program is free software: you can redistribute it and/or modify
 #     it under the terms of the GNU Affero General Public License as
