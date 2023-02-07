@@ -26,7 +26,7 @@ from bluepy import btle
 
 from mim365mi.m365scooter import M365Scooter
 
-from message import *
+#from message import *
 
 import struct
 
@@ -50,6 +50,8 @@ from miauth.mi.micrypto import MiCrypto
 from paho.mqtt import client as mqtt_client
 port = 1883
 broker = '127.0.0.1'
+username='scooter'
+password='PASSWORD'
 topic = "m365/test/"
 client_id = f'john-xina'
 
@@ -61,7 +63,7 @@ def connect_mqtt():
             print("Failed to connect, return code %d\n", rc)
 
     client = mqtt_client.Client(client_id)
-    client.username_pw_set('scooter', 'PASSWORD')
+    client.username_pw_set(username, password)
     client.on_connect = on_connect
     client.connect(broker, port)
     return client
@@ -163,6 +165,7 @@ def main():
     print("Logging in...")
     mc.login()
 
+    '''
     print("Retrieving serial number")
 
     mc.comm_simplex("55aa032001 10 0e")
@@ -182,7 +185,8 @@ def main():
             .set_attribute(0x78 if reboot else 0x79)    \
             .set_payload(b'\x01\x00')                   \
         .build()._raw_bytes.hex())
-
+    '''
+    
     def on_message(client, userdata, msg):
         print(f"Received `{msg.payload.decode()}` from `{msg.topic}` topic")
         if msg.topic == topic +'cmds/poweroff':
