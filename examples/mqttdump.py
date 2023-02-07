@@ -26,7 +26,7 @@ from bluepy import btle
 
 from mim365mi.m365scooter import M365Scooter
 
-from message import *
+#from message import *
 
 import struct
 
@@ -163,6 +163,7 @@ def main():
     print("Logging in...")
     mc.login()
 
+    '''
     print("Retrieving serial number")
 
     mc.comm_simplex("55aa032001 10 0e")
@@ -182,7 +183,8 @@ def main():
             .set_attribute(0x78 if reboot else 0x79)    \
             .set_payload(b'\x01\x00')                   \
         .build()._raw_bytes.hex())
-
+    '''
+    
     def on_message(client, userdata, msg):
         print(f"Received `{msg.payload.decode()}` from `{msg.topic}` topic")
         if msg.topic == topic +'cmds/poweroff':
