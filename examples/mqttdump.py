@@ -50,6 +50,8 @@ from miauth.mi.micrypto import MiCrypto
 from paho.mqtt import client as mqtt_client
 port = 1883
 broker = '127.0.0.1'
+username='scooter'
+password='PASSWORD'
 topic = "m365/test/"
 client_id = f'john-xina'
 
@@ -61,7 +63,7 @@ def connect_mqtt():
             print("Failed to connect, return code %d\n", rc)
 
     client = mqtt_client.Client(client_id)
-    client.username_pw_set('scooter', 'PASSWORD')
+    client.username_pw_set(username, password)
     client.on_connect = on_connect
     client.connect(broker, port)
     return client
